@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.vogo.superbrain"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "default"
+        multiDexEnabled true
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules-debug.pro'
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+
+        def BASE_URL = "BASE_URL"
+        def LOG = "LOG"
+        def API = "API"
+
+        dev {
+            resValue "string", "app_name", "VogoApplication"
+            buildConfigField("boolean", LOG, "true")
+            buildConfigField("boolean", API, "true")
+            buildConfigField "String", BASE_URL, '"http://35.197.159.99"'
+        }
+
+        prod {
+            resValue "string", "app_name", "VogoApplication"
+            buildConfigField("boolean", LOG, "false")
+            buildConfigField("boolean", API, "false")
+            buildConfigField "String", BASE_URL, '"https://wiet.com"'
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':lib')
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+
+    // Implement Koin
+    implementation "org.koin:koin-androidx-viewmodel:${versions.koin.viewmodel}"
+    implementation "org.koin:koin-core:${versions.koin.core}"
+
+    // Implement Groupie
+    implementation 'com.xwray:groupie:2.7.2'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.7.2'
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
+
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit2}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit2}"
+    implementation "com.squareup.retrofit2:converter-scalars:${versions.retrofit2}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit2}"
+
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp3}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3}"
+
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.reactivex}"
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+}
