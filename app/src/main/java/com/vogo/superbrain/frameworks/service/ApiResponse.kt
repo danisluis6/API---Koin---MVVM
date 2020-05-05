@@ -40,10 +40,7 @@ class ApiResponse : KoinComponent {
         val builder = StringBuilder()
         try {
             var jsonDataString: String?
-            inputStream = context!!.resources.openRawResource(
-                    context!!.resources
-                        .getIdentifier("response_intlogin", "raw", context!!.packageName)
-                )
+            inputStream = context!!.assets.open("json/response_intlogin.json")
             val bufferedReader =
                 BufferedReader(InputStreamReader(inputStream, "UTF-8"))
             while (bufferedReader.readLine().also { jsonDataString = it } != null) {

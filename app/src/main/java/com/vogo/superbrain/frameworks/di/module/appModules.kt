@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.vogo.lib.utils.TrustHTTPS
 import com.vogo.superbrain.BuildConfig
 import com.vogo.superbrain.frameworks.engine.LoginEngine
+import com.vogo.superbrain.frameworks.engine.SplashEngine
 import com.vogo.superbrain.frameworks.service.ApiResponse
 import com.vogo.superbrain.frameworks.service.ApiService
 import okhttp3.OkHttpClient
@@ -76,6 +77,10 @@ val networkModule = module {
 val engineModule = module {
     factory {
         LoginEngine()
+    }
+
+    factory {
+        SplashEngine()
     }
 }
 
