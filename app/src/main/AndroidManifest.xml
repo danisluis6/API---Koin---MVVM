@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vogo.superbrain">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".VogoApplication"
         android:allowBackup="true"
@@ -13,7 +15,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".activities.splash.SplashActivity">
+        <activity android:name=".activities.splash.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

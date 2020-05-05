@@ -6,7 +6,7 @@ import java.security.KeyStore
 import java.security.SecureRandom
 import javax.net.ssl.*
 
-class TrustHTTPS constructor(private val mClient: OkHttpClient.Builder) {
+class TrustHTTPS (private val client: OkHttpClient.Builder) {
 
     fun intializeCertificate() {
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
@@ -39,8 +39,8 @@ class TrustHTTPS constructor(private val mClient: OkHttpClient.Builder) {
                 KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
             keyManagerFactory.init(keyStore, "keystore_pass".toCharArray())
             sslContext.init(null, trustAllCerts, SecureRandom())
-            mClient.sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
-            mClient.hostnameVerifier(HostnameVerifier { _, _ -> true })
+            client.sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
+            client.hostnameVerifier(HostnameVerifier { _, _ -> true })
         } catch (ex: Exception) {
             ex.printStackTrace()
         }

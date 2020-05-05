@@ -1,0 +1,11 @@
+{
+  "header": {
+    "code": 0,
+    "message": "Get config from server successfully"
+  },
+  "body": {
+    "base_url": "www.google.com",
+    "android_min_version": "1.0.1",
+    "android_latest_version": "1.0.2"
+  }
+}

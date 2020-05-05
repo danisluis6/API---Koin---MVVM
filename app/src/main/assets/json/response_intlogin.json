@@ -1,12 +1,12 @@
 {
   "header":
-        {
-          "code": 0,
-          "message": "Login successfully!"
-        },
+  {
+    "code": 0,
+    "message": "Login successfully!"
+  },
   "body":
-        {
-          "email": "vuongluis@gmail.com",
-          "password": "Abc@123456"
-        }
+  {
+    "email": "vuongluis@gmail.com",
+    "password": "Abc@123456"
+  }
 }

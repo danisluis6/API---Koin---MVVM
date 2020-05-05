@@ -44,14 +44,14 @@ android {
             resValue "string", "app_name", "VogoApplication"
             buildConfigField("boolean", LOG, "true")
             buildConfigField("boolean", API, "true")
-            buildConfigField "String", BASE_URL, '"http://35.197.159.99"'
+            buildConfigField "String", BASE_URL, '"https://vogoapp.free.beeceptor.com"'
         }
 
         prod {
             resValue "string", "app_name", "VogoApplication"
             buildConfigField("boolean", LOG, "false")
             buildConfigField("boolean", API, "false")
-            buildConfigField "String", BASE_URL, '"https://wiet.com"'
+            buildConfigField "String", BASE_URL, '"https://vogoapp.free.beeceptor.com"'
         }
     }
     kotlinOptions {

@@ -1,12 +1,10 @@
 package com.vogo.superbrain.frameworks.di.module
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.vogo.lib.utils.TrustHTTPS
 import com.vogo.superbrain.BuildConfig
-import com.vogo.superbrain.frameworks.engine.LoginEngine
-import com.vogo.superbrain.frameworks.engine.SplashEngine
 import com.vogo.superbrain.frameworks.service.ApiResponse
-import com.vogo.superbrain.frameworks.service.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
@@ -16,74 +14,48 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val appModule = module {
-
-}
-
 val factoryModule = module {
 
-    single(named("interceptor")) { HttpLoggingInterceptor() }
+    single<HttpLoggingInterceptor>(named("interceptor")) { HttpLoggingInterceptor() }
 
-    single {
+    single<OkHttpClient.Builder>(named("OkHttpClient")) {
         val interceptor: HttpLoggingInterceptor = get(named("interceptor"))
         OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true).build()
+            .retryOnConnectionFailure(true)
     }
 
-    single {
-        BuildConfig.BASE_URL
+    single<String>(named("baseUrl")) { BuildConfig.BASE_URL }
+
+    single<TrustHTTPS>(named("trustHTTPs")) {
+        val okHttpClient : OkHttpClient.Builder = get(named("OkHttpClient"))
+        TrustHTTPS(okHttpClient)
     }
 
-    single {
-        TrustHTTPS(get())
-    }
-
-    single {
+    single<Gson>(named("Gson")) {
         GsonBuilder()
             .setLenient()
             .create()
     }
 
-    single {
-        val trustHttps : TrustHTTPS = get()
-        val baseUrl : String = get()
+    single<Retrofit> (named("retrofit")) {
+        val trustHttps : TrustHTTPS = get(named("trustHTTPs"))
+        val baseUrl : String = get(named("baseUrl"))
         trustHttps.intializeCertificate()
         Retrofit.Builder()
             .baseUrl(baseUrl)
-            .client(get())
-            .addConverterFactory(GsonConverterFactory.create(get()))
+            .client(get(named("OkHttpClient")))
+            .addConverterFactory(GsonConverterFactory.create(get(named("Gson"))))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
-    single {
-        val retrofit : Retrofit = get()
-        retrofit.create(ApiService::class.java)
-    }
+//    single<ApiService> (named("apiService")) {
+//        (get(named("retrofit")) as Retrofit).create(ApiService::class.java)
+//    }
 
-    single {
-        ApiResponse()
-    }
-}
-
-val networkModule = module {
-
-}
-
-val engineModule = module {
-    factory {
-        LoginEngine()
-    }
-
-    factory {
-        SplashEngine()
-    }
-}
-
-val viewModelModules = module {
-
+    single { ApiResponse() }
 }
