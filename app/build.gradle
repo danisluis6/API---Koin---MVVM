@@ -67,9 +67,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 
-    // Implement Koin
-    implementation "org.koin:koin-androidx-viewmodel:${versions.koin.viewmodel}"
-    implementation "org.koin:koin-core:${versions.koin.core}"
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:${versions.koin}"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:${versions.koin}"
+    // Koin AndroidX Fragment features
+    implementation "org.koin:koin-androidx-fragment:${versions.koin}"
+    // Koin AndroidX Experimental features
+    implementation "org.koin:koin-androidx-ext:${versions.koin}"
 
     // Implement Groupie
     implementation 'com.xwray:groupie:2.7.2'
@@ -88,8 +93,6 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${versions.okhttp3}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3}"
 
-    implementation "io.reactivex.rxjava2:rxandroid:${versions.reactivex}"
-
-    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation "org.greenrobot:eventbus:${versions.eventbus}"
 
 }

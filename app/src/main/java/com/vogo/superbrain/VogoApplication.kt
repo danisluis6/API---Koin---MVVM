@@ -11,7 +11,7 @@ class VogoApplication : Application() {
         super.onCreate()
         startKoin{
             androidContext(this@VogoApplication)
-            listOf(modules(factoryModule))
+            modules(appModule, engineModule)
         }
     }
 

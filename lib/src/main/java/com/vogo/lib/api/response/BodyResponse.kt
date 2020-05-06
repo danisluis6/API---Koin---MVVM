@@ -3,7 +3,7 @@ package com.vogo.lib.api.response
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ResponseBodySplash {
+class BodyResponse {
 
     @SerializedName("base_url")
     @Expose

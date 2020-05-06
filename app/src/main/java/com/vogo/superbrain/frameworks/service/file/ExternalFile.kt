@@ -1,4 +1,4 @@
-package com.vogo.superbrain.frameworks.service.response
+package com.vogo.superbrain.frameworks.service.file
 
 import android.content.Context
 import com.vogo.superbrain.frameworks.service.ApiResponse
@@ -6,7 +6,7 @@ import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
 
-object ReadExternalFile {
+object ExternalFile {
 
     fun getResponseInitLogin(context: Context): String {
         var inputStream: InputStream? = null
