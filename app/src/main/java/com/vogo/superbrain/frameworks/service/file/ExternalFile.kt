@@ -13,7 +13,7 @@ object ExternalFile {
         val builder = StringBuilder()
         try {
             var jsonDataString: String?
-            inputStream = context!!.assets.open(ApiResponse.LOGIN)
+            inputStream = context!!.assets.open(ApiResponse.AS_LOGIN)
             val bufferedReader =
                 BufferedReader(InputStreamReader(inputStream, ApiResponse.CHARSET))
             while (bufferedReader.readLine().also { jsonDataString = it } != null) {
@@ -30,7 +30,7 @@ object ExternalFile {
         val builder = StringBuilder()
         try {
             var jsonDataString: String?
-            inputStream = context!!.assets.open(ApiResponse.CONFIG)
+            inputStream = context!!.assets.open(ApiResponse.AS_CONFIG)
             val bufferedReader =
                 BufferedReader(InputStreamReader(inputStream, ApiResponse.CHARSET))
             while (bufferedReader.readLine().also { jsonDataString = it } != null) {

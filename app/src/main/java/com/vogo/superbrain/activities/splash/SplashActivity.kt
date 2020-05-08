@@ -1,6 +1,7 @@
 package com.vogo.superbrain.activities.splash
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.databinding.DataBindingUtil
@@ -15,6 +16,7 @@ class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding
     private lateinit var viewModel: SplashViewModel
+    private lateinit var rocketAnimation: AnimationDrawable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +34,19 @@ class SplashActivity : BaseActivity() {
     override fun initAttributes() {
         viewModel.getConfigureApp()
 
-        viewModel.getNextEvent().observe(this, Observer {
-            Handler().postDelayed({
+        binding.rocketThrust.apply {
+            setBackgroundResource(R.drawable.rocket_thrust)
+            rocketAnimation = background as AnimationDrawable
+        }
 
+        rocketAnimation.start()
+
+        viewModel.getNextEvent().observe(this, Observer {
+            Handler().postDelayed(Runnable {
+                rocketAnimation.stop()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
-
-            }, 1000)
+            }, 2000)
         })
     }
 

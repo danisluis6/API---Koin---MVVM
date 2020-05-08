@@ -1,6 +1,8 @@
 package com.vogo.lib.api.response
 
+import com.google.gson.annotations.SerializedName
+
 data class HeaderResponse (
-    var code: Int? = null,
-    var message: String? = null
+    @SerializedName("code") val code: Int? = null,
+    @SerializedName("message") val message: String? = null
 )

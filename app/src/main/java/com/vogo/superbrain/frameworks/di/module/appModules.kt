@@ -2,13 +2,17 @@ package com.vogo.superbrain.frameworks.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.vogo.lib.loading.VogoLoadingDialog
 import com.vogo.lib.utils.TrustHTTPS
 import com.vogo.superbrain.BuildConfig
+import com.vogo.superbrain.activities.splash.SplashActivity
 import com.vogo.superbrain.engine.AppEngine
 import com.vogo.superbrain.frameworks.service.ApiResponse
 import com.vogo.superbrain.frameworks.service.ApiService
+import com.vogo.superbrain.frameworks.storage.SharedPreference
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,6 +20,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val appModule = module {
+    single { return@single SharedPreference(get()) }
+}
+
+val apiModule = module {
 
     single {
         return@single HttpLoggingInterceptor()
@@ -67,5 +75,11 @@ val appModule = module {
 val engineModule =  module {
     single<AppEngine> {
         return@single AppEngine()
+    }
+}
+
+val activityModule = module {
+    scope(named<SplashActivity>()) {
+        factory { return@factory VogoLoadingDialog(get()) }
     }
 }

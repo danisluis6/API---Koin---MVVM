@@ -50,24 +50,7 @@ class LoginViewModel : ViewModel(), KoinComponent {
     fun getApiEvent(): LiveData<DisposableObserver<Response<LoginResponse?>?>?> = apiEvent
 
     fun onLoginButtonClick() {
-        apiEvent.value = login()
-    }
-
-    fun login(): DisposableObserver<Response<LoginResponse?>?>? {
-//        return reponse.login()?.subscribeOn(Schedulers.io())
-//            ?.observeOn(AndroidSchedulers.mainThread())
-//            ?.subscribeWith(object : DisposableObserver<Response<ResponseLoginMessage?>?>() {
-//                override fun onComplete() {
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                    // TODO
-//                }
-//
-//                override fun onNext(t: Response<ResponseLoginMessage?>) {
-//                }
-//            })
-        return null
+        // TODO
     }
 
     override fun onCleared() {
