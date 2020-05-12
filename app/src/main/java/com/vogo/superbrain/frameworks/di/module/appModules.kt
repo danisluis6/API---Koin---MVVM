@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder
 import com.vogo.lib.loading.VogoLoadingDialog
 import com.vogo.lib.utils.TrustHTTPS
 import com.vogo.superbrain.BuildConfig
-import com.vogo.superbrain.activities.splash.SplashActivity
+import com.vogo.superbrain.activities.splash.SplashView
 import com.vogo.superbrain.engine.AppEngine
 import com.vogo.superbrain.frameworks.service.ApiResponse
 import com.vogo.superbrain.frameworks.service.ApiService
@@ -79,7 +79,7 @@ val engineModule =  module {
 }
 
 val activityModule = module {
-    scope(named<SplashActivity>()) {
+    scope(named<SplashView>()) {
         factory { return@factory VogoLoadingDialog(get()) }
     }
 }

@@ -1,10 +1,12 @@
 package com.vogo.superbrain.activities.splash
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.vogo.lib.api.constant.Constants
 import com.vogo.lib.api.response.BodyResponse
 import com.vogo.lib.common.EventLive
+import com.vogo.lib.utils.AppUtils
 import com.vogo.superbrain.engine.AppEngine
 import com.vogo.superbrain.frameworks.service.ApiResponse
 import com.vogo.superbrain.frameworks.service.response.SplashResponse
@@ -15,15 +17,17 @@ import org.koin.core.inject
 
 class SplashViewModel : ViewModel(), KoinComponent {
 
-    val nextEvent = EventLive<String>()
+    val isCheckUpdated = EventLive<Boolean>()
 
+    val context: Context by inject()
     val appEngine : AppEngine by inject()
     val apiResponse : ApiResponse by inject()
     val sharedPreference : SharedPreference by inject()
 
+    private lateinit var mActivity: SplashView
+
     init {
         registerBus()
-        initAttributes()
     }
 
     private fun registerBus() {
@@ -31,10 +35,11 @@ class SplashViewModel : ViewModel(), KoinComponent {
         apiResponse.registerToBus(this)
     }
 
-    private fun initAttributes() {
+    fun handleView(activity: SplashView) {
+        mActivity = activity
     }
 
-    fun getNextEvent(): LiveData<String> = nextEvent
+    fun isCheckUpdated(): LiveData<Boolean> = isCheckUpdated
 
     fun getConfigureApp() {
         apiResponse.config()
@@ -44,9 +49,18 @@ class SplashViewModel : ViewModel(), KoinComponent {
     fun onConfigureResponse(response: SplashResponse) {
         if (Constants.AS_SUCCESS == response.header!!.code) {
             saveSharePreference(response.body)
-            nextEvent.postValue(response.header.message)
-        } else {
 
+            val currentVersion = AppUtils.getVersionName(context)
+            val minVersion = sharedPreference.getValueString(SharedPreference.ANDROID_MIN_VERSION)
+            var latestVersion = sharedPreference.getValueString(SharedPreference.ANDROID_LATEST_VERSION)
+
+            if (currentVersion!! < minVersion!!) {
+                isCheckUpdated.postValue(true)
+            } else {
+                isCheckUpdated.postValue(false)
+            }
+        } else {
+            // TODO
         }
     }
 

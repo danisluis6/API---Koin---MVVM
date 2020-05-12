@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".activities.splash.SplashActivity"
+        <activity android:name=".activities.splash.SplashView"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.login.LoginActivity"
+        <activity android:name=".activities.login.LoginView"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
     </application>

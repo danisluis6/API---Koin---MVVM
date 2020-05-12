@@ -6,4 +6,9 @@
     <!-- Error -->
     <string name="error.parse.json.file" translatable="false" tools:ignore="ExtraTranslation">Unable to parse JSON file.</string>
 
+    <!-- Dialog View -->
+    <string name="error.dialog.warning.new.versions" translatable="false" tools:ignore="ExtraTranslation">A new version of %1$s is available. Please update to version %2$s now.</string>
+
+    <!-- Label -->
+
 </resources>

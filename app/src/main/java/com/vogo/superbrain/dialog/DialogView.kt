@@ -1,118 +1,89 @@
 package com.vogo.superbrain.dialog
 
+import android.content.Context
 import android.os.Bundle
-import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import com.vogo.lib.R
-import com.vogo.superbrain.databinding.VogoDialogAlertBinding
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.vogo.superbrain.R
+import com.vogo.superbrain.databinding.DialogViewBinding
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 
-class DialogView : DialogFragment() {
+class DialogView : DialogFragment(), KoinComponent {
 
-    private lateinit var binding: VogoDialogAlertBinding
+    companion object {
+        const val MESSAGE = "message"
+        const val POSITIVE = "positive"
+        const val NEGATIVE = "negative"
 
-    private var mOnPositiveListener: OnPositiveListener? = null
-
-    private var mOnNegativeListener: OnNegativeListener? = null
-
-    fun createDialog(message: String?, positive: String?, negative: String?): DialogView? {
-        val frag = DialogView()
-        val args = Bundle()
-        args.apply {
-            putString("message", message)
-            putString("positive", positive)
-            if (negative != null) {
-                args.putString("negative", negative)
+        fun newInstance(message: String?, positive: String?, negative: String?) =
+            DialogView().apply {
+                arguments = Bundle().apply {
+                    putString(MESSAGE, message)
+                    putString(POSITIVE, positive)
+                    putString(NEGATIVE, negative)
+                }
             }
-        }
-        frag.apply {
-            arguments = args
-            isCancelable = false
-        }
-        val binding: MyInfoBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.vogo_dialog_alert, null, false
-        )
-
-        return frag
     }
+
+    val mContext : Context by inject()
+
+    private lateinit var binding: DialogViewBinding
+    private lateinit var viewModel: DialogViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.cloneInContext(
-            ContextThemeWrapper(
-                context,
+        binding = DataBindingUtil.inflate(
+            LayoutInflater.from(ContextThemeWrapper(
+                mContext,
                 R.style.FontTheme
-            )
+            )),
+            R.layout.dialog_view, container, false
         )
-            .inflate(R.layout.vogo_dialog_alert, container, false)
+        binding.lifecycleOwner = this
+
         dialog!!.window!!.requestFeature(Window.FEATURE_NO_TITLE)
         dialog!!.window!!.setBackgroundDrawableResource(R.drawable.ef_dialog_bg)
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(DialogViewModel::class.java)
+        binding.viewModel = viewModel
+        val bundle = arguments
+        bindViewModelData(bundle)
     }
 
-//    fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view!!, savedInstanceState)
-//        tvMessage.setText(arguments!!.getString("message", Constants.EMPTY_STRING))
-//        btnPositive.setText(arguments!!.getString("positive", Constants.EMPTY_STRING))
-//        btnPositive.setOnClickListener(View.OnClickListener { v: View? ->
-//            if (mOnPositiveListener != null) {
-//                mOnPositiveListener!!.onPositiveListener()
-//            }
-//            dismiss()
-//        })
-//        if (arguments!!.getString("negative") == null) {
-//            btnNegative.setVisibility(View.GONE)
-//        } else {
-//            btnNegative.setVisibility(View.VISIBLE)
-//            btnNegative.setText(arguments!!.getString("negative", Constants.EMPTY_STRING))
-//            btnNegative.setOnClickListener(View.OnClickListener {
-//                if (mOnNegativeListener != null) {
-//                    mOnNegativeListener!!.onNegativeListener()
-//                }
-//                dismiss()
-//            })
-//        }
-//    }
+    private fun bindViewModelData(bundle: Bundle?) {
+        viewModel.handleView(bundle)
+
+        viewModel.getPositiveEvent().observe(this.viewLifecycleOwner, Observer {
+
+        })
+
+        viewModel.getNegativeEvent().observe(this.viewLifecycleOwner, Observer {
+
+        })
+    }
 
     override fun show(
         manager: FragmentManager,
         tag: String?
     ) {
-        if (activity != null && activity!!.isFinishing) {
+        if (activity != null && requireActivity().isFinishing) {
             return
         }
         val ft = manager.beginTransaction()
         ft.add(this, tag)
         ft.commitAllowingStateLoss()
-    }
-
-    interface OnPositiveListener {
-        fun onPositiveListener()
-    }
-
-    interface OnNegativeListener {
-        fun onNegativeListener()
-    }
-
-    fun setOnPositiveListener(onPositiveListener: OnPositiveListener?) {
-        mOnPositiveListener = onPositiveListener
-    }
-
-    fun setOnNegativeListener(onNegativeListener: OnNegativeListener?) {
-        mOnNegativeListener = onNegativeListener
     }
 
 }

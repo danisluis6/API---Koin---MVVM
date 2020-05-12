@@ -3,6 +3,7 @@ package com.vogo.lib.loading
 import android.app.Activity
 import android.app.Dialog
 import android.view.Window
+import android.view.WindowManager
 import com.vogo.lib.R
 
 class VogoLoadingDialog(var activity: Activity?) : Dialog(activity!!) {
@@ -10,7 +11,8 @@ class VogoLoadingDialog(var activity: Activity?) : Dialog(activity!!) {
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window!!.setBackgroundDrawableResource(R.color.transparent)
-        setContentView(R.layout.vogo_progress_dialog)
+        window!!.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        setContentView(R.layout.progress_view)
         setCancelable(false)
     }
 
