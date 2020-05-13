@@ -11,9 +11,10 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
 
         <activity android:name=".activities.splash.SplashView"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +24,10 @@
         </activity>
 
         <activity android:name=".activities.login.LoginView"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
+        <activity android:name=".activities.main.MainView"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
     </application>

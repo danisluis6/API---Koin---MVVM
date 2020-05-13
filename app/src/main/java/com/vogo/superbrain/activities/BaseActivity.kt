@@ -1,5 +1,6 @@
 package com.vogo.superbrain.activities
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 

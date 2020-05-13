@@ -1,6 +1,9 @@
 package com.vogo.superbrain.dialog
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -8,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.vogo.lib.api.constant.Constants
 import com.vogo.superbrain.R
 import com.vogo.superbrain.databinding.DialogViewBinding
 import org.koin.core.KoinComponent
@@ -66,11 +70,26 @@ class DialogView : DialogFragment(), KoinComponent {
         viewModel.handleView(bundle)
 
         viewModel.getPositiveEvent().observe(this.viewLifecycleOwner, Observer {
-
+            val appPackageName: String = mContext.packageName
+            try {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(Constants.URL_APP_MARKET + appPackageName)
+                    )
+                )
+            } catch (anfe: ActivityNotFoundException) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(Constants.URL_APP_STORE + appPackageName)
+                    )
+                )
+            }
         })
 
         viewModel.getNegativeEvent().observe(this.viewLifecycleOwner, Observer {
-
+            dismiss()
         })
     }
 

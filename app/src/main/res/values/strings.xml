@@ -7,6 +7,11 @@
     <string name="error.parse.json.file" translatable="false" tools:ignore="ExtraTranslation">Unable to parse JSON file.</string>
 
     <!-- Dialog View -->
+    <string name="dialog.warning" translatable="false" tools:ignore="ExtraTranslation">New version available</string>
+    <string name="dialog.body" translatable="false" tools:ignore="ExtraTranslation">Please update app to new version to continue</string>
+    <string name="dialog.negative" translatable="false" tools:ignore="ExtraTranslation">NO, THANKS</string>
+    <string name="dialog.positive" translatable="false" tools:ignore="ExtraTranslation">UPDATE</string>
+
     <string name="error.dialog.warning.new.versions" translatable="false" tools:ignore="ExtraTranslation">A new version of %1$s is available. Please update to version %2$s now.</string>
 
     <!-- Label -->

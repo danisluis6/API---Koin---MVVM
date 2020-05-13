@@ -21,8 +21,8 @@ class ApiResponse : BaseEngine(), KoinComponent {
 
     companion object {
         const val CHARSET = "UTF-8"
-        const val AS_LOGIN = "json/response_intlogin.json"
-        const val AS_CONFIG = "json/response_intconfig.json"
+        const val AS_LOGIN = "json/intlogin.json"
+        const val AS_CONFIG = "json/intconfig.json"
     }
 
     fun config() {
