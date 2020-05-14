@@ -13,7 +13,7 @@ object ExternalFile {
         val builder = StringBuilder()
         try {
             var jsonDataString: String?
-            inputStream = context!!.assets.open(ApiResponse.AS_LOGIN)
+            inputStream = context.assets.open(ApiResponse.AS_LOGIN)
             val bufferedReader =
                 BufferedReader(InputStreamReader(inputStream, ApiResponse.CHARSET))
             while (bufferedReader.readLine().also { jsonDataString = it } != null) {
@@ -30,7 +30,24 @@ object ExternalFile {
         val builder = StringBuilder()
         try {
             var jsonDataString: String?
-            inputStream = context!!.assets.open(ApiResponse.AS_CONFIG)
+            inputStream = context.assets.open(ApiResponse.AS_CONFIG)
+            val bufferedReader =
+                BufferedReader(InputStreamReader(inputStream, ApiResponse.CHARSET))
+            while (bufferedReader.readLine().also { jsonDataString = it } != null) {
+                builder.append(jsonDataString)
+            }
+        } finally {
+            inputStream?.close()
+        }
+        return String(builder)
+    }
+
+    fun getResponseInitBoardGame(context: Context): String {
+        var inputStream: InputStream? = null
+        val builder = StringBuilder()
+        try {
+            var jsonDataString: String?
+            inputStream = context.assets.open(ApiResponse.AS_INIT_BOARDGAME)
             val bufferedReader =
                 BufferedReader(InputStreamReader(inputStream, ApiResponse.CHARSET))
             while (bufferedReader.readLine().also { jsonDataString = it } != null) {

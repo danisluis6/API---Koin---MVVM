@@ -13,6 +13,7 @@ import com.vogo.superbrain.R
 import com.vogo.superbrain.activities.BaseActivity
 import com.vogo.superbrain.activities.main.MainView
 import com.vogo.superbrain.databinding.SplashViewBinding
+import com.vogo.superbrain.dialog.DialogSignIn
 import com.vogo.superbrain.dialog.DialogView
 import com.vogo.superbrain.frameworks.storage.SharedPreference
 import org.koin.core.KoinComponent

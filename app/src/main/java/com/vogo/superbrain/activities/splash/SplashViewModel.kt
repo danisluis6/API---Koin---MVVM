@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.vogo.lib.api.constant.Constants
-import com.vogo.lib.api.response.BodyResponse
+import com.vogo.lib.api.response.BodySplashResponse
 import com.vogo.lib.common.EventLive
 import com.vogo.lib.utils.AppUtils
 import com.vogo.superbrain.engine.AppEngine
@@ -64,10 +64,10 @@ class SplashViewModel : ViewModel(), KoinComponent {
         }
     }
 
-    private fun saveSharePreference(body: BodyResponse?) {
-        body!!.baseUrl?.let { sharedPreference.put(SharedPreference.BASE_URL, it) }
-        body.androidMinVersion?.let { sharedPreference.put(SharedPreference.ANDROID_MIN_VERSION, it) }
-        body.androidMinVersion?.let { sharedPreference.put(SharedPreference.ANDROID_LATEST_VERSION, it) }
+    private fun saveSharePreference(bodySplash: BodySplashResponse?) {
+        bodySplash!!.baseUrl?.let { sharedPreference.put(SharedPreference.BASE_URL, it) }
+        bodySplash.androidMinVersion?.let { sharedPreference.put(SharedPreference.ANDROID_MIN_VERSION, it) }
+        bodySplash.androidMinVersion?.let { sharedPreference.put(SharedPreference.ANDROID_LATEST_VERSION, it) }
     }
 
     override fun onCleared() {

@@ -1,0 +1,64 @@
+{
+  "header": {
+    "code": 0,
+    "message": "Get config from server successfully"
+  },
+  "body": {
+    "boards": [
+      {
+        "id" : 1,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/africa/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "Africa",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "Africa is the second continent in the world in terms of population and the third in area. With an area of \u200B\u200Babout 30,221,532 km² including adjacent islands."
+      },
+      {
+        "id" : 2,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/asia/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "Asia",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "Asia is the largest continent and the most demographic of the seven largest continents in the world. It covers 8.7% of the total area of \u200B\u200Bthe Earth."
+      },
+      {
+        "id" : 3,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/northamerica/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "North America",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "North America is a continent located in the Northern Hemisphere of the Earth, east of the Pacific Ocean and west of the Atlantic Ocean, south of the Arctic Ocean, north of South America"
+      },
+      {
+        "id" : 4,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southamerica/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "South America",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "South America is the continental part of the western part of the Earth's Southern Hemisphere, starting south of the Panama Canal and below."
+      },
+      {
+        "id" : 5,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/europe/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "Europe",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "Geologically and geographically, Europe is a peninsula or subcontinent, forming the westernmost part of Eurasia, or even Eurasia, depending on how it looks."
+      },
+      {
+        "id" : 6,
+        "container" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/oceania/area.png",
+        "thumbnail" : "https://superintellect.s3-ap-southeast-1.amazonaws.com/boards/container/geographicarea/southafrica/thumbnail.jpg",
+        "title" : "Oceania",
+        "sub_title" : "Bronze I, II, III",
+        "media" : "",
+        "description" : "Oceania is a geographical region that includes Melanesia, Micronesia, Polynesia and Australasia. The continent is spread over the Eastern Hemisphere and Western Hemisphere, covering an area of \u200B\u200B8,725,989 km² and a population of about 40 million."
+      }
+    ]
+  }
+}

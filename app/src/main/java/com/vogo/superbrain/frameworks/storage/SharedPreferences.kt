@@ -11,6 +11,8 @@ class SharedPreference(val context: Context) {
         const val BASE_URL = "base_url"
         const val ANDROID_MIN_VERSION = "android_min_version"
         const val ANDROID_LATEST_VERSION = "android_latest_version"
+
+        const val TOKEN = "token"
     }
 
     val sharedPref: SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE,
