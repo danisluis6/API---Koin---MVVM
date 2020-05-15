@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.vogo.superbrain.activities.login.LoginViewModel" />
+            type="com.vogo.geographyintellect.activities.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

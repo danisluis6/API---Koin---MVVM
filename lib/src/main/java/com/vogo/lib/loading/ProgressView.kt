@@ -6,7 +6,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.vogo.lib.R
 
-class VogoLoadingDialog(var activity: Activity?) : Dialog(activity!!) {
+class ProgressView(var activity: Activity?) : Dialog(activity!!) {
 
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)

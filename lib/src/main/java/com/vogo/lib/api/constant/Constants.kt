@@ -8,5 +8,9 @@ class Constants {
 
         const val URL_APP_MARKET = "market://details?id="
         const val URL_APP_STORE = "https://play.google.com/store/apps/details?id="
+
+        const val GOOGLE = "google"
+        const val FACEBOOK = "facebook"
     }
+
 }

@@ -12,7 +12,8 @@ buildscript {
             retrofit2 : "2.6.2",
             okhttp3 : "4.2.2",
             reactivex : "2.1.1",
-            eventbus : "3.2.0"
+            eventbus : "3.2.0",
+            nav: "2.3.0-alpha06"
         ]
     }
     repositories {

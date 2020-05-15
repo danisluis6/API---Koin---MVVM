@@ -3,6 +3,9 @@
     <string name="global.label.login" translatable="false" tools:ignore="ExtraTranslation">Login</string>
     <string name="global.label.vogo" translatable="false" tools:ignore="ExtraTranslation">Vogo</string>
 
+    <string name="global.social.google" translatable="false" tools:ignore="ExtraTranslation">Google</string>
+    <string name="global.social.facebook" translatable="false" tools:ignore="ExtraTranslation">Facebook</string>
+
     <string name="global.button.more" translatable="false" tools:ignore="ExtraTranslation">More</string>
     <string name="global.button.play" translatable="false" tools:ignore="ExtraTranslation">Play</string>
 
@@ -19,6 +22,7 @@
 
     <string name="error.dialog.warning.new.versions" translatable="false" tools:ignore="ExtraTranslation">A new version of %1$s is available. Please update to version %2$s now.</string>
 
-    <!-- Label -->
+    <string name="profile.title" translatable="false" tools:ignore="ExtraTranslation">MY PROFILE</string>
+    <string name="profile.upload.title" translatable="false" tools:ignore="ExtraTranslation">Upload Avatar image file</string>
 
 </resources>

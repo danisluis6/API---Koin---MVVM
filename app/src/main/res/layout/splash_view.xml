@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.vogo.superbrain.activities.splash.SplashViewModel" />
+            type="com.vogo.geographyintellect.activities.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".activities.splash.SplashView">
 
-        <com.vogo.superbrain.frameworks.customui.VideoSurfaceView
+        <com.vogo.geographyintellect.frameworks.customui.VideoSurfaceView
             android:id="@+id/videoSurfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

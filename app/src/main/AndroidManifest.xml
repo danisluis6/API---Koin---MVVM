@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.vogo.superbrain">
+    package="com.vogo.geographyintellect">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".VogoApplication"
+        android:name="com.vogo.geographyintellect.VogoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
 
-        <activity android:name=".activities.splash.SplashView"
+        <activity android:name="com.vogo.geographyintellect.activities.splash.SplashView"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
@@ -23,10 +23,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.login.LoginView"
+        <activity android:name="com.vogo.geographyintellect.activities.login.LoginView"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
-        <activity android:name=".activities.main.MainView"
+        <activity android:name="com.vogo.geographyintellect.activities.main.MainView"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
+        <activity android:name="com.vogo.geographyintellect.activities.profile.ProfileView"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
