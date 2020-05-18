@@ -31,7 +31,7 @@ class ProfileView : BaseActivity(), KoinComponent {
         supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, host)
             .setPrimaryNavigationFragment(host).commit()
 
-        viewModel.loadAvatar.observe(this, Observer {
+        viewModel.getAvatar().observe(this, Observer {
             binding.navView.avatar.load(it) {
                 crossfade(true)
                 scale(Scale.FIT)

@@ -8,73 +8,232 @@
             type="com.vogo.geographyintellect.activities.profile.ProfileViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/ef_nav_shape">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:background="@drawable/ef_nav_shape"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-        <TextView
-            android:id="@+id/headLine"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="21sp"
-            android:text="@{viewModel.headLine}"
-            android:textStyle="normal"
-            android:typeface="monospace"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:layout_margin="19dp"
-            android:background="@drawable/ef_nav_avatar_border"
-            app:layout_constraintTop_toBottomOf="@+id/headLine"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            <TextView
+                android:id="@+id/headLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:text="@{viewModel.headLine}"
+                android:textStyle="normal"
+                android:typeface="monospace"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_mtrl_checked_circle"
-            android:importantForAccessibility="no"
-            app:layout_constraintTop_toBottomOf="@+id/headLine"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            <View
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_margin="19dp"
+                android:background="@drawable/ef_nav_avatar_border"
+                app:layout_constraintTop_toBottomOf="@+id/headLine"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <TextView
-            android:id="@+id/uploadText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.uploadText}"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            android:typeface="monospace"
-            android:layout_margin="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/headLine"
-            app:layout_constraintLeft_toRightOf="@+id/avatar"/>
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_mtrl_checked_circle"
+                android:importantForAccessibility="no"
+                app:layout_constraintTop_toBottomOf="@+id/headLine"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/primary_text_dark"
-            android:layout_margin="16dp"
-            style="@style/AppTheme.Button"
-            android:textSize="11sp"
-            android:text="BROWSE"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:background="@drawable/ef_nav_dotted"
-            app:layout_constraintTop_toBottomOf="@+id/uploadText"
-            app:layout_constraintLeft_toRightOf="@+id/avatar"/>
+            <TextView
+                android:id="@+id/uploadText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.uploadText}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:typeface="monospace"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/headLine"
+                app:layout_constraintLeft_toRightOf="@+id/avatar"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/primary_text_dark"
+                android:layout_margin="16dp"
+                style="@style/AppTheme.Button"
+                android:textSize="12sp"
+                android:text="@string/global.button.browse"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:background="@drawable/ef_nav_dotted"
+                app:layout_constraintTop_toBottomOf="@+id/uploadText"
+                app:layout_constraintLeft_toRightOf="@+id/avatar"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(view) -> viewModel.onProfileDetails()}"
+                android:background="@{viewModel.isProfileDetails() ? @drawable/ef_nav_item_enabled : @drawable/ef_nav_item_disabled}"
+                app:layout_constraintTop_toBottomOf="@+id/avatar"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <TextView
+                    android:id="@+id/personaldetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:textColor="@{viewModel.isProfileDetails() ? @android:color/black : @android:color/white}"
+                    android:textSize="21sp"
+                    android:textAllCaps="true"
+                    android:text="@string/global.label.personal.details"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/noticePersonalDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@{viewModel.isProfileDetails() ? @android:color/black : @android:color/darker_gray}"
+                    android:textSize="15sp"
+                    android:text="@string/global.label.notice.personal.details"
+                    app:layout_constraintTop_toBottomOf="@+id/personaldetails"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(view) -> viewModel.onBillingAddress()}"
+                android:background="@{viewModel.isBillingAddress() ? @drawable/ef_nav_item_enabled : @drawable/ef_nav_item_disabled}"
+                app:layout_constraintTop_toBottomOf="@+id/layer1"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <TextView
+                    android:id="@+id/billingaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:textColor="@{viewModel.isBillingAddress() ? @android:color/black : @android:color/white}"
+                    android:textSize="21sp"
+                    android:textAllCaps="true"
+                    android:text="@string/global.label.billing.address"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/noticebillingaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@{viewModel.isBillingAddress() ? @android:color/black : @android:color/darker_gray}"
+                    android:textSize="15sp"
+                    android:text="@string/global.label.notice.billing.address"
+                    app:layout_constraintTop_toBottomOf="@+id/billingaddress"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(view) -> viewModel.onPaymentMethods()}"
+                android:background="@{viewModel.isPaymentMethods() ? @drawable/ef_nav_item_enabled : @drawable/ef_nav_item_disabled}"
+                app:layout_constraintTop_toBottomOf="@+id/layer2"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <TextView
+                    android:id="@+id/paymentmethods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:textColor="@{viewModel.isPaymentMethods() ? @android:color/black : @android:color/white}"
+                    android:textSize="21sp"
+                    android:textAllCaps="true"
+                    android:text="@string/global.label.payment.methods"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/noticepaymentmethods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@{viewModel.isPaymentMethods() ? @android:color/black : @android:color/darker_gray}"
+                    android:textSize="15sp"
+                    android:text="@string/global.label.notice.payment.methods"
+                    app:layout_constraintTop_toBottomOf="@+id/paymentmethods"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{(view) -> viewModel.onChangePassword()}"
+                android:background="@{viewModel.isChangePassword() ? @drawable/ef_nav_item_enabled : @drawable/ef_nav_item_disabled}"
+                app:layout_constraintTop_toBottomOf="@+id/layer3"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <TextView
+                    android:id="@+id/changepassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:textColor="@{viewModel.isChangePassword() ? @android:color/black : @android:color/white}"
+                    android:textSize="21sp"
+                    android:textAllCaps="true"
+                    android:text="@string/global.label.change.password"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/noticechangepassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@{viewModel.isChangePassword() ? @android:color/black : @android:color/darker_gray}"
+                    android:textSize="15sp"
+                    android:text="@string/global.label.notice.change.password"
+                    app:layout_constraintTop_toBottomOf="@+id/changepassword"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

@@ -8,4 +8,6 @@
         android:id="@+id/personalFragment"
         android:name="com.vogo.geographyintellect.fragment.personal.PersonalFragment"
         android:label="PersonalFragment" />
+
+
 </navigation>

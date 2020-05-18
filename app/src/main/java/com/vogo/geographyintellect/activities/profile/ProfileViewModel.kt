@@ -20,6 +20,10 @@ class ProfileViewModel : ViewModel(), KoinComponent {
 
     val uploadText = ObservableField<String>()
     val headLine = ObservableField<String>()
+    val isProfileDetails = ObservableField<Boolean>()
+    val isBillingAddress = ObservableField<Boolean>()
+    val isPaymentMethods = ObservableField<Boolean>()
+    val isChangePassword = ObservableField<Boolean>()
 
     val loadAvatar = EventLive<String>()
 
@@ -39,5 +43,33 @@ class ProfileViewModel : ViewModel(), KoinComponent {
         apiResponse.registerToBus(this)
     }
 
-    fun loadAvatar() : EventLive<String> = loadAvatar
+    fun getAvatar() : EventLive<String> = loadAvatar
+
+    fun onProfileDetails() {
+        isProfileDetails.set(true)
+        isBillingAddress.set(false)
+        isPaymentMethods.set(false)
+        isChangePassword.set(false)
+    }
+
+    fun onBillingAddress() {
+        isProfileDetails.set(false)
+        isBillingAddress.set(true)
+        isPaymentMethods.set(false)
+        isChangePassword.set(false)
+    }
+
+    fun onPaymentMethods() {
+        isProfileDetails.set(false)
+        isBillingAddress.set(false)
+        isPaymentMethods.set(true)
+        isChangePassword.set(false)
+    }
+
+    fun onChangePassword() {
+        isProfileDetails.set(false)
+        isBillingAddress.set(false)
+        isPaymentMethods.set(false)
+        isChangePassword.set(true)
+    }
 }

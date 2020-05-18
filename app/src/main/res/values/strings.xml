@@ -2,12 +2,26 @@
 
     <string name="global.label.login" translatable="false" tools:ignore="ExtraTranslation">Login</string>
     <string name="global.label.vogo" translatable="false" tools:ignore="ExtraTranslation">Vogo</string>
+    <string name="global.label.personal.details" translatable="false" tools:ignore="ExtraTranslation">Personal Details</string>
+    <string name="global.label.notice.personal.details" translatable="false" tools:ignore="ExtraTranslation">Please fill up your</string>
+    <string name="global.label.billing.address" translatable="false" tools:ignore="ExtraTranslation">Billing Address</string>
+    <string name="global.label.notice.billing.address" translatable="false" tools:ignore="ExtraTranslation">This is the address associated with your payment method.</string>
+    <string name="global.label.payment.methods" translatable="false" tools:ignore="ExtraTranslation">Payment Methods</string>
+    <string name="global.label.notice.payment.methods" translatable="false" tools:ignore="ExtraTranslation">Edit Card Details</string>
+    <string name="global.label.change.password" translatable="false" tools:ignore="ExtraTranslation">Change Password</string>
+    <string name="global.label.notice.change.password" translatable="false" tools:ignore="ExtraTranslation">Minimum of 6 characters including at least 1 number. Please note, passwords are case sensitive.</string>
+
+    <string name="global.title.profile" translatable="false" tools:ignore="ExtraTranslation">My Profile</string>
+
+    <string name="global.hint.email" translatable="false" tools:ignore="ExtraTranslation">Email</string>
+    <string name="global.hint.name" translatable="false" tools:ignore="ExtraTranslation">Name</string>
 
     <string name="global.social.google" translatable="false" tools:ignore="ExtraTranslation">Google</string>
     <string name="global.social.facebook" translatable="false" tools:ignore="ExtraTranslation">Facebook</string>
 
     <string name="global.button.more" translatable="false" tools:ignore="ExtraTranslation">More</string>
     <string name="global.button.play" translatable="false" tools:ignore="ExtraTranslation">Play</string>
+    <string name="global.button.browse" translatable="false" tools:ignore="ExtraTranslation">Browse</string>
 
     <!-- Error -->
     <string name="error.parse.json.file" translatable="false" tools:ignore="ExtraTranslation">Unable to parse JSON file.</string>

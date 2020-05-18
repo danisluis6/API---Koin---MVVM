@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vogo.geographyintellect.databinding.PersonalViewBinding
 import com.vogo.lib.api.constant.Constants
+import com.vogo.lib.utils.AppUtils
 import org.koin.core.KoinComponent
 
 class PersonalFragment : Fragment(), KoinComponent {
@@ -58,6 +60,10 @@ class PersonalFragment : Fragment(), KoinComponent {
 
     private fun bindViewModelData() {
         viewModel.handleView(module)
+
+        viewModel.getKeyboardEvent().observe(this.viewLifecycleOwner, Observer {
+            activity?.let { it1 -> AppUtils.hiddenKeyBoard(it1) }
+        })
     }
 
 }
