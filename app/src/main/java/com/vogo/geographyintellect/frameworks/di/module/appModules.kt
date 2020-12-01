@@ -2,18 +2,14 @@ package com.vogo.geographyintellect.frameworks.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.vogo.lib.loading.ProgressView
-import com.vogo.lib.utils.TrustHTTPS
 import com.vogo.geographyintellect.BuildConfig
-import com.vogo.geographyintellect.activities.main.MainView
-import com.vogo.geographyintellect.activities.splash.SplashView
 import com.vogo.geographyintellect.engine.AppEngine
 import com.vogo.geographyintellect.frameworks.service.ApiResponse
 import com.vogo.geographyintellect.frameworks.service.ApiService
 import com.vogo.geographyintellect.frameworks.storage.SharedPreference
+import com.vogo.lib.utils.TrustHTTPS
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

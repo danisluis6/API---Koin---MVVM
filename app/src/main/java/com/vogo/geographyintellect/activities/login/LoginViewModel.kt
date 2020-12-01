@@ -3,6 +3,7 @@ package com.vogo.geographyintellect.activities.login
 import android.app.Application
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.vogo.lib.common.EventLive
@@ -14,7 +15,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import retrofit2.Response
 
-class LoginViewModel : ViewModel(), KoinComponent {
+class LoginViewModel() : ViewModel(), KoinComponent {
 
     private val app: Application by inject()
     private val reponse: ApiResponse by inject()

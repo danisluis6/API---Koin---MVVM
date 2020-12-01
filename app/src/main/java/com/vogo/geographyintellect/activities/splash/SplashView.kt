@@ -48,9 +48,11 @@ class SplashView : BaseActivity(), KoinComponent, SurfaceHolder.Callback {
 
     fun checkExistingSignedInUser() {
         val account = GoogleSignIn.getLastSignedInAccount(this)
-        sharedPreference.put(SharedPreference.EMAIL, account!!.email.toString())
-        sharedPreference.put(SharedPreference.AVATAR, account.photoUrl.toString())
-        sharedPreference.put(SharedPreference.NAME, account.displayName.toString())
+        if (account != null) {
+            sharedPreference.put(SharedPreference.EMAIL, account.email.toString())
+            sharedPreference.put(SharedPreference.AVATAR, account.photoUrl.toString())
+            sharedPreference.put(SharedPreference.NAME, account.displayName.toString())
+        }
     }
 
     override fun attachViewModel() {
